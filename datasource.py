@@ -21,7 +21,8 @@ class Mnist():
         return self.train_loader
 
     def get_test_data(self):
-        return self.test_data
+#        return self.test_data
+        return self.test_loader
 
 
 class DatasetSplit(Dataset):

@@ -1,5 +1,5 @@
 import torch
-import torch.distributed.deprecated as dist
+import torch.distributed as dist
 import model
 import time
 import sys
