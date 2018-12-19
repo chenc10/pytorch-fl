@@ -7,6 +7,7 @@ class Mnist():
     IID = False
     MAX_NUM_CLASSES_PER_CLIENT = 5
     BATCH_SIZE = 100
+    FULL_TEST_SIZE = 10000
 
     def __init__(self):
 
@@ -15,7 +16,7 @@ class Mnist():
 
 
         self.train_loader = torch.utils.data.DataLoader(dataset=self.train_data, batch_size=Mnist.BATCH_SIZE, shuffle=True)
-        self.test_loader = torch.utils.data.DataLoader(dataset=self.test_data, batch_size=Mnist.BATCH_SIZE, shuffle=True)
+        self.test_loader = torch.utils.data.DataLoader(dataset=self.test_data, batch_size=Mnist.FULL_TEST_SIZE, shuffle=True)
 
     def get_train_data(self):
         return self.train_loader
@@ -34,8 +35,6 @@ class DatasetSplit(Dataset):
         return len(self.idxs)
 
     def __getitem__(self, item):
-        #error liuying
-        #only integers, slices (`:`), ellipsis (`...`), None and long or byte Variables are valid indices (got numpy.float64)
         #print("item",item)
         #print("self.idxs[item]",self.idxs[item])
         image, label = self.dataset[int(self.idxs[item])]

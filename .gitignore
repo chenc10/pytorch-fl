@@ -1,3 +1,5 @@
 mnist
 *.pyc
 *.out
+.idea
+.idea/*

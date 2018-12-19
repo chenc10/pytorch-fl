@@ -16,32 +16,25 @@ def get_new_model(model, group):
     return  model
 
 def worker_run(size, rank):
-
     modell = model.CNN()
-
     optimizer = torch.optim.Adam(modell.parameters(), lr=LR)
     loss_func = torch.nn.CrossEntropyLoss()
 
+    test_data = Mnist().get_test_data()
     if(IID == True):
         train_loader = Mnist().get_train_data()
-        test_data = Mnist().get_test_data()
     else:
         if(rank > 0):
             if(rank == 1):
                 train_loader = Mnist_noniid().get_train_data1()
-                test_data = Mnist_noniid().get_test_data1()
             if(rank == 2):
                 train_loader = Mnist_noniid().get_train_data2()
-                test_data = Mnist_noniid().get_test_data2()
             if(rank == 3):
                 train_loader = Mnist_noniid().get_train_data3()
-                test_data = Mnist_noniid().get_test_data3()
             if(rank == 4):
                 train_loader = Mnist_noniid().get_train_data4()
-                test_data = Mnist_noniid().get_test_data4()
             if(rank == 5):
                 train_loader = Mnist_noniid().get_train_data5()
-                test_data = Mnist_noniid().get_test_data5()
     for step, (b_x, b_y) in enumerate(test_data):
         test_x = b_x
         test_y = b_y
