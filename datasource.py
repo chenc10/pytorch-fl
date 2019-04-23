@@ -64,7 +64,6 @@ class KWS_noniid():
     IID = False
     MAX_NUM_CLASSES_PER_CLIENT = 5
     BATCH_SIZE = 100
-    FULL_TEST_SIZE = 10000
 
     def __init__(self, batchsize=BATCH_SIZE, total_part=5):
         self.train_data = KWSconstructor(root='./kws/index_train.txt', transform=None)
@@ -110,41 +109,16 @@ class Mnist():
         self.train_data = datasets.MNIST(root='./mnist/', train=True, transform=transforms.ToTensor(), download=True)
         self.test_data = datasets.MNIST(root='./mnist/', train=False, transform=transforms.ToTensor())
 
-<<<<<<< HEAD
-
-        self.train_loader = torch.utils.data.DataLoader(dataset=self.train_data, batch_size=Mnist.BATCH_SIZE, shuffle=True)
-        self.test_loader = torch.utils.data.DataLoader(dataset=self.test_data, batch_size=Mnist.FULL_TEST_SIZE, shuffle=True)
-=======
         self.train_loader = torch.utils.data.DataLoader(dataset=self.train_data, batch_size=batchsize, shuffle=True)
         self.test_loader = torch.utils.data.DataLoader(dataset=self.test_data, batch_size=10000, shuffle=True)
->>>>>>> ea6d707a35afcf74a96de0c2a88941787b877f7f
 
     def get_train_data(self):
         return self.train_loader
 
     def get_test_data(self):
-<<<<<<< HEAD
-#        return self.test_data
         return self.test_loader
 
 
-class DatasetSplit(Dataset):
-    def __init__(self, dataset, idxs):
-        self.dataset = dataset
-        self.idxs = list(idxs)
-=======
-        return self.test_loader
->>>>>>> ea6d707a35afcf74a96de0c2a88941787b877f7f
-
-
-<<<<<<< HEAD
-    def __getitem__(self, item):
-        #print("item",item)
-        #print("self.idxs[item]",self.idxs[item])
-        image, label = self.dataset[int(self.idxs[item])]
-        return image, label
-=======
->>>>>>> ea6d707a35afcf74a96de0c2a88941787b877f7f
 
 
 class Mnist_noniid():
