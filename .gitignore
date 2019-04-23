@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 mnist
 *.pyc
 *.out
 .idea
 .idea/*
+=======
+*.pyc
+*.npy
+>>>>>>> ea6d707a35afcf74a96de0c2a88941787b877f7f
